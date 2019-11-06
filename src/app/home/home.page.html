@@ -6,9 +6,73 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
-  </div>
+
+<ion-content> 
+  <h3>Filtrar por sexo:</h3>
+    <ion-input class="blanco" type="text" [(ngModel)]="sex" placeholder="Introduce male o female"></ion-input>
+  <ion-grid><ion-row>
+      <ng-container *ngFor="let user of users | async">
+      <ion-col *ngIf="sex == user.gender" size-xs="12" size-sm="6" size-md="6" size-lg="4" size-xl="4">
+          <ion-card> 
+          <ion-item>
+            <ion-avatar item-start>
+            </ion-avatar>
+            <h2>{{ user.name }}</h2>
+          </ion-item>
+          <ion-card-content>
+              <p *ngIf="sex != user.gender">El genero no se corresponde con el de esta persona</p>
+              <table id="tabla" class="contacto" *ngIf="sex == user.gender">
+                  
+                  <tr>
+                    <h3><p>Nombre: {{ user.name }}</p> </h3>
+                    <h3><p class="blanco">Edad: {{ user.age }}</p> </h3>
+                  </tr>
+                  <hr>
+                  <tr>
+                    <h3><p>Sobre {{ user.name }}: </p><br><p class="blanco"> {{ user.about }}</p></h3>
+                  </tr>
+                  <hr>
+                  <tr>
+                    <h3><p>Email: {{ user.email }}</p> </h3>
+                    <h3><p class="blanco">Tlfn: {{ user.phone }}</p> </h3>
+                  </tr>
+                  <hr>
+                  <tr>
+                    <h3><p>Color de ojos: </p><p class="blanco"> {{ user.eyeColor }}</p> </h3>
+
+                    <h3 id="color_ojos"><p>Género:</p><p class="blanco"> {{ user.gender }} </p></h3>
+
+                    <h3 class="genero" *ngIf= "user.gender == 'male'" >
+                      genero: 
+                      <ion-radio-group>
+                        <ion-item>
+                          <ion-label>Hombre</ion-label>
+                          <ion-radio class="blanco" slot="start" name="genero" value="Hombre" checked disabled></ion-radio>
+                        </ion-item>
+                        <ion-item>
+                          <ion-label>Mujer</ion-label>
+                          <ion-radio class="blanco" slot="start" name="genero" value="Mujer" disabled></ion-radio>
+                        </ion-item>
+                      </ion-radio-group>
+                    </h3>
+                    <h3 class="genero" *ngIf= "user.gender == 'female'" >genero: 
+                      <ion-radio-group>
+                        <ion-item class ="pillaelfondocohone">
+                          <ion-label>Hombre</ion-label>
+                          <ion-radio class="blanco" slot="start" name="genero" value="Hombre" disabled></ion-radio>
+                        </ion-item>
+                        <ion-item class ="pillaelfondocohone">
+                          <ion-label>Mujer</ion-label>
+                          <ion-radio class="blanco" slot="start" name="genero" value="Mujer" checked disabled></ion-radio>
+                        </ion-item>
+                      </ion-radio-group>
+                    </h3>
+                  </tr>
+                </table>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      </ng-container>
+    </ion-row>
+  </ion-grid>
 </ion-content>

@@ -1,0 +1,38 @@
+ion-item {
+  --ion-background-color: #c05111;
+}
+.blanco {
+  color: #000;
+}
+ion-card-content {
+  background-color: #dd8532;
+}
+p,
+h3 {
+  color: #000;
+}
+@media (max-width: 700px) {
+  ion-content {
+    --ion-background-color: #ffeabd;
+  }
+}
+@media (min-width: 701px) {
+  ion-content {
+    --ion-background-color: #ffeabd;
+  }
+}
+@media (min-width: 1001px) {
+  ion-content {
+    --ion-background-color: #ffeabd;
+  }
+}
+@media (orientation: landscape) {
+  .genero {
+    display: none;
+  }
+}
+@media (orientation: portrait) {
+  #color_ojos {
+    display: none;
+  }
+}
